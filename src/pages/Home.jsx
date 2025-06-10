@@ -12,6 +12,25 @@ import CustomCursor from '../components/CustomCursor';
 
 
 function Home() {
+ const [show, setShow] = useState(false);
+
+  const handleClick = () => {
+    setShow(true);
+    setTimeout(() => setShow(false), 3000); 
+  };
+    const styles = {
+  notification: {
+    position: 'fixed',
+    top: '20px',
+    right: '20px',
+    backgroundColor: '#4caf50',
+    color: 'white',
+    padding: '10px 20px',
+    borderRadius: '8px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+    zIndex: 1000,
+  }
+};
 
     return (
         <>
@@ -30,8 +49,8 @@ function Home() {
                                              </svg>
                                     </span> with <strong> Waffle </strong> </h1>
                                 <p className='sub-text mb-11'>Waffle is a peer-to-peer cross-chain centralized-&-decentralized marketplace with sales & support.</p>
-                                <button className='theme-color-btn brn-btn' id=''>Get Started</button>
-                                <button className='white-color-btn brn-btn' id=''>Try Demo</button>
+                                <button type='button' className='theme-color-btn brn-btn' id=''>Get Started</button>
+                                <button type='button' onClick={handleClick} className='white-color-btn brn-btn' id=''>Try Demo</button>
                             </div>
 
 
@@ -51,6 +70,12 @@ function Home() {
                         </div>
                     </div>
                 </section>
+
+                {show && (
+                        <div style={styles.notification}>
+                        🔔 Feature coming soon!
+                        </div>
+                    )}
 
             </main>
 
