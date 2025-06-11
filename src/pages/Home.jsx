@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar'
-
-
-import ione from "/coins.svg";
-import ithree from "/ellipse-75.svg";
-import ifour from "/squery01.svg";
-import isix from "/rectangle-88.svg";
+import Navbar from '../components/Navbar';
+import ione from "/pic5.png";
+import ithree from "/pic6.png";
+import ifour from "/pic1.png";
+import isix from "/pic3.png";
 import CustomCursor from '../components/CustomCursor';
 
 
@@ -34,13 +32,14 @@ function Home() {
 
     return (
         <>
+        <div className='tops-setions float-left w-full'>
            <CustomCursor/>
             <Navbar />
 
             <main className='float-left w-full'>
                 <section className='section-hero'>
 
-                    <div className='wrapper'>
+                    
                         <div className='container-hero relative'>
                             <div className='banner-tms01'>
                                 <h1 className='hero-main-text'>Decentralized <span> marketplace 
@@ -49,7 +48,7 @@ function Home() {
                                              </svg>
                                     </span> with <strong> Waffle </strong> </h1>
                                 <p className='sub-text mb-11'>Waffle is a peer-to-peer cross-chain centralized-&-decentralized marketplace with sales & support.</p>
-                                <button type='button' className='theme-color-btn brn-btn' id=''>Get Started</button>
+                                <button type='button' onClick={handleClick} className='theme-color-btn brn-btn' id=''>Get Started</button>
                                 <button type='button' onClick={handleClick} className='white-color-btn brn-btn' id=''>Try Demo</button>
                             </div>
 
@@ -66,9 +65,10 @@ function Home() {
                             <div className='isix'>
                                 <img src={isix} alt="h" />
                             </div>
+                            
 
                         </div>
-                    </div>
+                    
                 </section>
 
                 {show && (
@@ -78,6 +78,8 @@ function Home() {
                     )}
 
             </main>
+            
+        </div>
 
         </>
     )

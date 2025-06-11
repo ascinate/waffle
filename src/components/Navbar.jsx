@@ -8,10 +8,29 @@ import { NavLink } from 'react-router-dom';
     { name: 'Pricing', path: '' },
     { name: 'Blog', path: '' },
     { name: 'Contact', path: '' },
-    { name: 'Sign up Now', path: '' }
     ];
 
 function Navbar() {
+
+     const [show, setShow] = useState(false);
+    
+      const handleClick = () => {
+        setShow(true);
+        setTimeout(() => setShow(false), 3000); 
+      };
+        const styles = {
+      notification: {
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        backgroundColor: '#4caf50',
+        color: 'white',
+        padding: '10px 20px',
+        borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+        zIndex: 1000,
+      }
+    };
 
      const navLinkClass = ({ isActive }) =>
     `block py-2 px-3 rounded-sm md:p-0 font-medium ${
@@ -28,7 +47,7 @@ function Navbar() {
     return (
         <>
         <header className='float-left w-full'>
-           <nav className="bg-white float-left border-gray-200 dark:bg-gray-900 w-full">
+           <nav className="float-left border-gray-200 dark:bg-gray-900 w-full">
                <div className='container mx-auto'>
                    <div className="max-w-screen-xl moible-full flex flex-wrap items-center mx-auto p-4">
                         <NavLink to='/' className="flex loggos items-center space-x-3 rtl:space-x-reverse">
@@ -42,7 +61,7 @@ function Navbar() {
                         </button>
 
                         <div className="md:block md:w-auto" id="navbar-default">
-                            <ul className="font-medium signup-nows flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                            <ul className="font-medium signup-nows flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  md:dark:bg-gray-900 dark:border-gray-700">
                                 {navItems.map((item, index) => (
                                     <li key={index}>
                                     <NavLink to={item.path} className={navLinkClass}>
@@ -50,6 +69,10 @@ function Navbar() {
                                     </NavLink>
                                     </li>
                                 ))}
+
+                                <li>
+                                    <button type='button' onClick={handleClick} className='signup01'>Sign up Now</button>
+                                </li>
                                 
                             </ul>
                         </div>
@@ -77,6 +100,12 @@ function Navbar() {
                    </div>
                </div>
            </nav>
+
+           {show && (
+                <div style={styles.notification}>
+                🔔 Feature coming soon!
+                </div>
+            )}
           
         </header>
         
